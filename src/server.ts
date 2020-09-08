@@ -8,6 +8,7 @@ import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import PostRouter from './routes/PostRoutes';
 import UserRoutes from './routes/UserRoutes';
+import EstadoRoutes from './routes/EstadoRoutes'
 
 // Server Class
 class Server {
@@ -37,11 +38,12 @@ class Server {
         this.app.use('/', indexRoutes);
         this.app.use('/api/posts', PostRouter);
         this.app.use('/api/users', UserRoutes);
+        this.app.use('/api/estados', EstadoRoutes)
     }
 
     public start(): void {
         this.app.listen(this.app.get('port'), () => {
-            console.log('Server is listenning on port', this.app.get('port'));
+            console.log('Servidor corriendo en el puerto', this.app.get('port'));
         });
     }
 }
